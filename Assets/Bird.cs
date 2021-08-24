@@ -7,6 +7,9 @@ public class Bird : MonoBehaviour
 {
     private Vector3 _initialPosition;
     [SerializeField] private float _launchPower=500;
+
+
+    private float _timeSittingAround;
     private bool _birdwasLaunched;
 
     private void Awake()
@@ -21,10 +24,11 @@ public class Bird : MonoBehaviour
             _timeSittingAround += Time.deltaTime;
 
         }
-        if (transform.position.y > 5 || transform.position.y<-5 || transform.position.x>8.5 || transform.position.y<-8.5    )
+        if (transform.position.y > 5 || transform.position.y<-5 || transform.position.x>8.5 || transform.position.y<-8.5 || _timeSittingAround>3)
         {
             string currentSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(currentSceneName);
+
         }
 
 
